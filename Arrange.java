@@ -28,9 +28,8 @@ public class Arrange {
 			data.add(string);
 		}
 		//3 计算A(n,i)的排列，i表示待排列字符的个数
-		Arrange arrange = new Arrange();
 		for(int i = 1; i <= data.size(); i++) {
-			arrange.getArrange(data,new ArrayList<String>(),i);
+			getArrange(data, new ArrayList<String>(), i);
 		}
 	}
 	
@@ -40,7 +39,7 @@ public class Arrange {
 	 * @param target 排列的结果
 	 * @param k 排列后字符的个数
 	 */
-	public <E> void getArrange(List<E> data,List<E> target, int k) {
+	public static <E> void getArrange(List<E> data, List<E> target, int k) {
 		List<E> copyData;//复制待排列的字符列表data
 		List<E> copyTarget;//复制当前排列结果target
 		if(target.size() == k) {
@@ -52,12 +51,13 @@ public class Arrange {
 			return;
 		}
 		//生成排列
-		for(int i=0; i<data.size(); i++) {
+		for(int i = 0; i < data.size(); i++) {
 			copyData = new ArrayList<E>(data);
 			copyTarget = new ArrayList<E>(target);
+			//将待排列字符存放到copyTarget中，删除copyData中的当前字符
 			copyTarget.add(copyData.get(i));
 			copyData.remove(i);
-			//迭代，直到得到k个字符的排列
+			//递归，直到得到k个字符的排列
 			getArrange(copyData, copyTarget, k);
 		}
 	}
