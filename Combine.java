@@ -25,7 +25,7 @@ public class Combine {
 		System.out.println("请输入一个正整数(正整数小于待组合字符串的长度)，回车结束：\n");
 		String kString = scanner.nextLine();
 		int k;//存放待组合的字符个数
-		while (!kString.matches("^[1-9]*$") || (k = Integer.parseInt(kString)) > inString.length()) {
+		while (!kString.matches("^[0-9]*[1-9][0-9]*$") || (k = Integer.parseInt(kString)) > inString.length()) {//0*[1-9]\\d*
 			System.out.println("输入错误，字符串是一个正整数且正整数小于待组合字符串的长度，请重输：\n");
 			kString = scanner.nextLine();
 		}
